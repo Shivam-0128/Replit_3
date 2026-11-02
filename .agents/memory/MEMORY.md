@@ -1,0 +1,1 @@
+- [Product scope](product-scope.md) — keep the habit tracker simple, implement only requested functions, and preserve immediate sign-up.

@@ -1,6 +1,6 @@
-# [Project name]
+# Habit Circle
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A simple community habit tracker for friends and colleagues with private habits, optional sharing, daily tracking, and comments.
 
 ## Run & Operate
 
@@ -22,19 +22,28 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/habit-circle/` — React web app, served at `/`
+- `artifacts/api-server/` — shared API at `/api`
+- `lib/api-spec/openapi.yaml` — API source of truth
+- `lib/db/src/schema/` — account, session, habit, completion, and comment tables
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Custom email/password accounts preserve the user's explicit no-email-confirmation requirement. Passwords use salted scrypt, and sessions use opaque HTTP-only cookies with hashed tokens persisted in PostgreSQL.
+- Current streak counts consecutive dates backwards from the latest completion, even when that completion is not today.
+- New accounts start with no habits. Do not seed other people's personal habits into new accounts or fabricate community activity.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Immediate sign-up, sign-in and sign-out.
+- Personal habit creation, private by default, with descriptive context.
+- Seven-day owner-only completion tracking, lifetime days done and current streak.
+- Shared community habits and member comments with author display names.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Keep the application simple and easy to use. Do not add functions not requested.
+- Make reasonable choices for unspecified details, including design.
 
 ## Gotchas
 
